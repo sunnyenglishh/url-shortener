@@ -38,8 +38,10 @@ Route::middleware(['auth'])->group(function () {
             ->name('companies.sendInvite');
     });
 
-    Route::post('/short-urls', [ShortUrlController::class, 'store'])
-        ->name('short-urls.store');
+    Route::middleware('role:Admin,Member')->group(function () {
+        Route::post('/short-urls', [ShortUrlController::class, 'store'])
+            ->name('short-urls.store');
+    });
 });
 
 // Short URL redirection route
