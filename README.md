@@ -41,3 +41,14 @@ php artisan test
 ```
 
 Tests cover URL creation, role restrictions, company-level access, member-level access and public URL redirection.
+
+
+## AI Usage
+
+I used ChatGPT mainly for syntax reference, debugging, and understanding Laravel concepts.
+
+- Used ChatGPT for Blade and HTML syntax.
+- Used ChatGPT to understand and write Laravel Unit and Feature tests.
+- Used ChatGPT for Laravel syntax and debugging issues.
+- Used ChatGPT for Git commit message suggestions.
+- Used ChatGPT to prepare the README file.
