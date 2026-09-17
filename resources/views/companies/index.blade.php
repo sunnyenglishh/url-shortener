@@ -7,10 +7,11 @@
                 <h1 class="text-2xl font-bold text-gray-800">
                     Companies
                 </h1>
-
+                @if (auth()->user()->role === \App\Models\User::ROLE_SUPER_ADMIN)
                 <a href="{{ route('companies.create') }}" class="px-4 py-2 bg-gray-800 text-white rounded-md">
                     + Add Company
                 </a>
+                @endif
             </div>
 
             @if(session('success'))
@@ -42,9 +43,11 @@
 
                                 <td class="px-6 py-4 flex gap-2 text-center justify-center">
 
+                                @if (auth()->user()->role === \App\Models\User::ROLE_SUPER_ADMIN)
                                     <a href="{{ route('companies.edit', $company) }}" class="px-3 py-1 bg-gray-200 rounded">
                                         Edit
                                     </a>
+                                @endif
                                     <form method="get" action="{{ route('companies.invite', $company) }}">
                                         @csrf
 
@@ -53,6 +56,7 @@
                                             Invite
                                         </button>
                                     </form>
+                                @if (auth()->user()->role === \App\Models\User::ROLE_SUPER_ADMIN)
 
                                     <form method="POST" action="{{ route('companies.destroy', $company) }}">
                                         @csrf
@@ -62,6 +66,7 @@
                                             Delete
                                         </button>
                                     </form>
+                                @endif
 
                                 </td>
                             </tr>

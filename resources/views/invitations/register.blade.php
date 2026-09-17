@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
 
     <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
@@ -51,7 +51,7 @@
                                 type="email"
                                 value="{{ $invitation->email }}"
                                 class="w-full border-gray-300 rounded-md bg-gray-100"
-                                disabled
+                                readonly
                             >
                         </div>
 
@@ -68,7 +68,7 @@
                                 type="text"
                                 value="{{ $invitation->role }}"
                                 class="w-full border-gray-300 rounded-md bg-gray-100"
-                                disabled
+                                readonly
                             >
                         </div>
 
@@ -122,4 +122,4 @@
         </div>
     </div>
 
-</x-app-layout>
+</x-guest-layout>

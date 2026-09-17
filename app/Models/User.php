@@ -30,6 +30,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'company_id',
+        'role',
         'password',
     ];
 
@@ -66,4 +68,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public const ROLE_SUPER_ADMIN = 'SuperAdmin';
+    public const ROLE_ADMIN = 'Admin';
+    public const ROLE_MEMBER = 'Member';
 }

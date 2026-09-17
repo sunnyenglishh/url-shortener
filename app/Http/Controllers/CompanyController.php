@@ -17,7 +17,12 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::latest()->get();
+        $companies = collect();
+        if (auth()->user()->role === User::ROLE_SUPER_ADMIN) {
+            $companies = Company::latest()->get();
+        } else if (auth()->user()->role === User::ROLE_ADMIN) {
+            $companies = Company::where('id', auth()->user()->company_id)->get();
+        }
 
         return view('companies.index', compact('companies'));
     }
@@ -106,7 +111,7 @@ class CompanyController extends Controller
     public function sendInvite(Request $request, Company $company)
     {
         $validated = $request->validate([
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'unique:invitations,email'],
             'role' => ['required', 'in:Admin,Member'],
         ]);
 

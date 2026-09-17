@@ -16,6 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                  @if(auth()->user()->role === \App\Models\User::ROLE_SUPER_ADMIN || auth()->user()->role === \App\Models\User::ROLE_ADMIN)
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link href="{{ route('companies.index') }}" :active="request()->routeIs('companies.*')">
+                            {{ __('Companies') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">

@@ -42,7 +42,9 @@
                             <select name="role" class="w-full border-gray-300 rounded-md">
                                 <option value="">Select Role</option>
                                 <option value="Admin">Admin</option>
-                                <option value="Member">Member</option>
+                                @if(auth()->user()->role === \App\Models\User::ROLE_ADMIN)
+                                    <option value="Member">Member</option>
+                                @endif
                             </select>
 
                             @error('role')
